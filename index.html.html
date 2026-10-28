@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abir Raj Rohit // Developer & Photographer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons & FontAwesome -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mono: {
+                            950: '#09090b', // Deep obsidian black
+                            900: '#121215',
+                            850: '#18181b', // Zinc charcoal
+                            800: '#27272a',
+                            700: '#3f3f46',
+                            500: '#71717a',
+                            400: '#a1a1aa',
+                            300: '#d4d4d8',
+                            200: '#e4e4e7',
+                            100: '#f4f4f5',
+                            50:  '#fafafa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom graph paper pattern */
+        .bg-graph-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        
+        .bg-graph-dense {
+            background-size: 16px 16px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Sleek minimalist scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffffff;
+        }
+
+        /* Custom crisp line container borders */
+        .mono-border {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .mono-border-hover:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Custom subtle focus style */
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="bg-mono-950 text-mono-100 font-sans selection:bg-white selection:text-black relative overflow-x-hidden antialiased">
+
+    <!-- GRAPH PAPER BACKDROP -->
+    <div class="fixed inset-0 bg-graph-pattern pointer-events-none z-0 opacity-80"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-mono-950/90 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo with Small Image Support -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 border border-white/30 group-hover:border-white transition-all overflow-hidden flex items-center justify-center bg-black/50">
+                    <!-- Replace 'your-small-photo.jpg' with your image path or link -->
+                    <img 
+                        src="image/IMG_0139_Original.jpeg" 
+                        alt="AB" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
+                    />
+                    <span class="font-mono font-bold text-xs text-white hidden">AR</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono font-bold tracking-wider text-white text-sm">ABIR.DEV // OPTIMIST</span>
+                    <span class="text-[10px] text-mono-400 font-mono tracking-widest uppercase">DEVELOPER & PHOTOGRAPHY</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wider uppercase">
+                <a href="#about" class="text-mono-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span class="text-mono-500">//</span> 01. About
+                </a>
+                <a href="#projects" class="text-mono-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span class="text-mono-500">//</span> 02. Projects
+                </a>
+                <a href="#astro-graph" class="text-mono-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span class="text-mono-500">//</span> 03. Astro Lab
+                </a>
+                <a href="#contact" class="px-5 py-2.5 border border-white text-white hover:bg-white hover:text-black transition-all font-bold tracking-wider">
+                    HIRE ME / RESUME
+                </a>
+            </nav>
+
+            <!-- Mobile Drawer Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-white border border-white/20 hover:border-white">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-mono-950 border-b border-white/10 px-6 py-6 space-y-4 font-mono text-xs uppercase tracking-wider">
+            <a href="#about" class="block text-mono-300 hover:text-white py-1">// 01. About</a>
+            <a href="#projects" class="block text-mono-300 hover:text-white py-1">// 02. Dev Projects</a>
+            <a href="#astro-graph" class="block text-mono-300 hover:text-white py-1">// 03. Astro Canvas</a>
+            <a href="#contact" class="block w-full text-center py-3 border border-white text-white font-bold">// Contact & Resume</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="relative z-10 pt-20">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative py-12 lg:py-20 border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left: Typography -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 border border-white/20 bg-mono-900 text-mono-300 text-xs font-mono tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 bg-white animate-pulse"></span>
+                        LOCATION: BANGLADESH // SYSTEM ONLINE
+                    </div>
+
+                    <div class="space-y-1">
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase font-sans">
+                            ABIR RAJ ROHIT
+                        </h1>
+                        <p class="text-mono-400 font-mono text-sm tracking-widest">
+                            [ OPTIMIST ]
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-mono-900/90 border-l-2 border-white mono-border font-mono text-xs text-mono-300 space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-mono-500">SYSTEM.ROLE =&gt;</span>
+                            <span id="typing-text" class="text-white font-bold"></span>
+                            <span class="animate-pulse text-white">_</span>
+                        </div>
+                        <p class="text-mono-500 text-[11px] pt-1">
+                            CS Engineering Student • Developer • Photographer
+                        </p>
+                    </div>
+
+                    <p class="text-mono-400 text-sm sm:text-base leading-relaxed max-w-xl">
+                        Architecting clean software applications while capturing the deep cosmos through long-exposure Photography. Focused on performance, object-oriented design, and minimalist aesthetics.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="pt-4 flex flex-wrap items-center gap-4 font-mono text-xs">
+                        <a href="#projects" class="px-6 py-3.5 bg-white text-black font-bold uppercase tracking-wider hover:bg-mono-200 transition-all flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-4 h-4"></i> View Projects
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 border border-white/30 text-white font-medium uppercase tracking-wider hover:border-white transition-all flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Large Image Blueprint Frame (Replaced Vector Astro Character) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-sm bg-mono-900/90 p-6 mono-border relative bg-graph-dense space-y-4">
+                        <!-- Corner Blueprint Accents -->
+                        <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-white"></div>
+                        <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-white"></div>
+                        <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-white"></div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-white"></div>
+
+                        <div class="flex justify-between items-center text-[10px] font-mono text-mono-400 border-b border-white/10 pb-2">
+                            <span>SCHEMATIC_ID: AR-9082</span>
+                            <span>VER: 2.0.26</span>
+                        </div>
+
+                        <!-- Boro Chobir Frame Container -->
+                        <div class="w-full aspect-square bg-mono-950 border border-white/20 relative overflow-hidden group p-2">
+                            <!-- Star Map Grid Lines Overlay -->
+                            <div class="absolute inset-0 bg-graph-pattern opacity-30 pointer-events-none z-10"></div>
+                            
+                            <!-- Replace 'your-large-photo.jpg' with your photo link -->
+                            <div class="w-full h-full relative overflow-hidden border border-white/10">
+                                <img 
+                                    src="image/IMG_0139_Original.jpeg" 
+                                    alt="Abir Raj Rohit" 
+                                    class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                                />
+                                <!-- Tech Scanline Effect -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent opacity-40 pointer-events-none z-10"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1 text-center font-mono">
+                            <p class="text-xs text-white font-bold uppercase tracking-wider">DEV & PHOTOGRAPHY CORE</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-white/10 flex justify-between text-[10px] font-mono text-mono-500">
+                            <span>STATUS: ACTIVE</span>
+                            <span>STACK: PYTHON / WEB / PHOTOGRAPHY</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LIVE METRICS BAR -->
+            <div class="absolute bottom-0 left-0 right-0 bg-mono-900 border-t border-white/10 py-3 font-mono text-xs">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                        <span class="text-mono-500">COMMITS // </span>
+                        <span class="text-white font-bold">1,240+</span>
+                    </div>
+                    <div>
+                        <span class="text-mono-500">ASTRO FRAMES // </span>
+                        <span class="text-white font-bold">3,500+</span>
+                    </div>
+                    <div>
+                        <span class="text-mono-500">VENTURES // </span>
+                        <span class="text-white font-bold">02 ACTIVE</span>
+                    </div>
+                    <div>
+                        <span class="text-mono-500">ACCURACY // </span>
+                        <span class="text-white font-bold">99.8%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ABOUT & GRAPH SKILLS METRICS SECTION -->
+        <section id="about" class="py-20 border-b border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-12 font-mono space-y-2">
+                    <span class="text-xs text-mono-400 tracking-widest uppercase">// 01. SPECIFICATION & SKILL GRAPH</span>
+                    <h2 class="text-3xl font-bold text-white uppercase tracking-tight">ARCHITECTURAL OVERVIEW</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Text Info Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="p-6 bg-mono-900/80 mono-border space-y-4">
+                            <h3 class="font-mono text-sm font-bold text-white uppercase border-b border-white/10 pb-2">// BACKGROUND BIOGRAPHY</h3>
+                            <p class="text-mono-300 text-sm leading-relaxed">
+                                Optimist, Computer Science Engineering Student, Developer, and Astrophotographer based in Rajshahi, Bangladesh.
+                            </p>
+                        </div>
+
+                        <!-- Technical Domains -->
+                        <div class="grid grid-cols-2 gap-4 font-mono text-xs">
+                            <div class="p-4 bg-mono-900 border border-white/10">
+                                <span class="text-mono-500 block mb-1">DOMAIN_01</span>
+                                <span class="text-white font-bold">Python</span>
+                            </div>
+                            <div class="p-4 bg-mono-900 border border-white/10">
+                                <span class="text-mono-500 block mb-1">DOMAIN_02</span>
+                                <span class="text-white font-bold">Web Development</span>
+                            </div>
+                            <div class="p-4 bg-mono-900 border border-white/10">
+                                <span class="text-mono-500 block mb-1">DOMAIN_03</span>
+                                <span class="text-white font-bold">Photography</span>
+                            </div>
+                            <div class="p-4 bg-mono-900 border border-white/10">
+                                <span class="text-mono-500 block mb-1">DOMAIN_04</span>
+                                <span class="text-white font-bold">System Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph / Blueprint Metrics Visual Column -->
+                    <div class="lg:col-span-7 bg-mono-900 p-6 sm:p-8 mono-border bg-graph-dense space-y-6">
+                        <div class="flex justify-between items-center font-mono text-xs border-b border-white/10 pb-3">
+                            <span class="text-white font-bold">// TECHNICAL PROFICIENCY METRICS (PERCENTAGE GRAPH)</span>
+                            <span class="text-mono-500">SCALE: 0 - 100%</span>
+                        </div>
+
+                        <!-- Progress Meters -->
+                        <div class="space-y-5 font-mono text-xs">
+                            
+                            <!-- Skill 1 -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-mono-300">
+                                    <span>01. PYTHON </span>
+                                    <span class="text-white font-bold">90%</span>
+                                </div>
+                                <div class="w-full h-3 bg-mono-950 border border-white/20 p-0.5">
+                                    <div class="h-full bg-white transition-all duration-1000" style="width: 90%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 2 -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-mono-300">
+                                    <span>02. HTML5 / TAILWIND CSS / JAVASCRIPT</span>
+                                    <span class="text-white font-bold">92%</span>
+                                </div>
+                                <div class="w-full h-3 bg-mono-950 border border-white/20 p-0.5">
+                                    <div class="h-full bg-white transition-all duration-1000" style="width: 92%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 3 -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-mono-300">
+                                    <span>03. PHOTOGRAPHY / LIGHTROOM </span>
+                                    <span class="text-white font-bold">88%</span>
+                                </div>
+                                <div class="w-full h-3 bg-mono-950 border border-white/20 p-0.5">
+                                    <div class="h-full bg-white transition-all duration-1000" style="width: 88%;"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="p-4 bg-mono-950 border border-white/10 font-mono text-[11px] text-mono-400 flex items-center justify-between">
+                            <span>GRID_STATUS: CALIBRATED</span>
+                            <span class="text-white">// READY FOR DEPLOYMENT</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- DEVELOPER PROJECTS SECTION -->
+        <section id="projects" class="py-20 border-b border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div class="font-mono space-y-2">
+                        <span class="text-xs text-mono-400 tracking-widest uppercase">// 02. CODE ARCHITECTURE</span>
+                        <h2 class="text-3xl font-bold text-white uppercase tracking-tight">DEVELOPER PROJECTS</h2>
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 mt-4 md:mt-0 font-mono text-xs">
+                        <button onclick="filterProjects('all', this)" class="project-tab active px-4 py-2 border border-white bg-white text-black font-bold">ALL_PROJECTS</button>
+                        <button onclick="filterProjects('web', this)" class="project-tab px-4 py-2 border border-white/20 text-mono-400 hover:text-white hover:border-white">WEB_APPS</button>
+                        <button onclick="filterProjects('ventures', this)" class="project-tab px-4 py-2 border border-white/20 text-mono-400 hover:text-white hover:border-white">VENTURES</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+                    
+                    <!-- Project 1: ShebaX -->
+                    <div class="project-card bg-mono-900/80 p-8 mono-border mono-border-hover transition-all flex flex-col justify-between space-y-6" data-category="web ventures">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between font-mono text-xs text-mono-400 border-b border-white/10 pb-3">
+                                <span>SYSTEM_ID: SHEBAX_01</span>
+                                <span class="text-white px-2 py-0.5 bg-mono-800 border border-white/20">LIVE PLATFORM</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white uppercase">ShebaX Local Services Framework</h3>
+                            <p class="text-mono-300 text-sm leading-relaxed">
+                                An integrated web service ecosystem engineered to connect verified local technicians and household service operations directly with clients in Rajshahi.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px] text-mono-400">
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ HTML5/CSS3 ]</span>
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ TAILWIND ]</span>
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ JS LOGIC ]</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                                <a href="#" class="text-white hover:underline flex items-center gap-1">VIEW ARCHITECTURE &rarr;</a>
+                                <span class="text-mono-500">2025 - PRESENT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Mango Master -->
+                    <div class="project-card bg-mono-900/80 p-8 mono-border mono-border-hover transition-all flex flex-col justify-between space-y-6" data-category="web ventures">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between font-mono text-xs text-mono-400 border-b border-white/10 pb-3">
+                                <span>SYSTEM_ID: MANGO_MASTER</span>
+                                <span class="text-white px-2 py-0.5 bg-mono-800 border border-white/20">E-COMMERCE</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white uppercase">Mango Master Brand & Asset Hub</h3>
+                            <p class="text-mono-300 text-sm leading-relaxed">
+                                Digital produce distribution and web platform connecting authentic agricultural orchards with direct consumers through quality-controlled logistics.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px] text-mono-400">
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ E-COM UI ]</span>
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ BRANDING ]</span>
+                                <span class="px-2.5 py-1 bg-mono-950 border border-white/10">[ LOGISTICS ]</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                                <a href="#" class="text-white hover:underline flex items-center gap-1">EXPLORE PLATFORM &rarr;</a>
+                                <span class="text-mono-500">2024 - 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- MINIMALIST INTERACTIVE ASTRO GRAPH CANVAS LAB -->
+        <section id="astro-graph" class="py-20 border-b border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-5 font-mono space-y-4">
+                        <span class="text-xs text-mono-400 tracking-widest uppercase">// 03. INTERACTIVE BLUEPRINT</span>
+                        <h2 class="text-3xl font-bold text-white uppercase tracking-tight">ASTRO GRAPH CANVAS LAB</h2>
+                        <p class="text-mono-300 text-sm leading-relaxed">
+                            Click directly inside the blueprint grid to plot custom coordinate nodes, form line-art constellations, and launch meteor vector streaks.
+                        </p>
+                        
+                        <div class="pt-2 space-y-2 text-xs text-mono-400">
+                            <p>// LEFT CLICK: PLACE COORDINATE NODE</p>
+                            <p>// SHOOTING STARS: ACTIVE PHYSICS ENGINE</p>
+                        </div>
+
+                        <div class="flex items-center gap-3 pt-4">
+                            <button id="clear-astro-canvas" class="px-5 py-2.5 border border-white/20 text-white hover:border-white text-xs font-mono">
+                                CLEAR COORDINATES
+                            </button>
+                            <button id="trigger-meteor-btn" class="px-5 py-2.5 bg-white text-black font-bold text-xs font-mono uppercase hover:bg-mono-200">
+                                LAUNCH METEORS
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Workspace Container -->
+                    <div class="lg:col-span-7">
+                        <div class="w-full h-96 bg-mono-950 border border-white/20 relative bg-graph-pattern cursor-crosshair overflow-hidden">
+                            <canvas id="astro-canvas" class="w-full h-full"></canvas>
+                            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center text-[10px] font-mono text-mono-400 bg-mono-900/90 p-2 border border-white/10 pointer-events-none">
+                                <span id="node-count">PLOT NODES: 0</span>
+                                <span>CANVAS: 2D MONOCHROME VECTOR ENGINE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CONTACT SECTION & FOOTER (Centered Layout) -->
+        <section id="contact" class="py-20 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+                
+                <div class="mb-8 text-center font-mono space-y-2">
+                    <span class="text-xs text-mono-400 tracking-widest uppercase">// 04. DIRECT TRANSMISSION</span>
+                    <h2 class="text-3xl font-bold text-white uppercase tracking-tight">INITIATE/CONTACT</h2>
+                </div>
+
+                <!-- Centered Contact Panel -->
+                <div class="w-full max-w-xl bg-mono-900 p-8 sm:p-10 mono-border space-y-6 font-mono text-xs text-center border border-white/20 shadow-2xl">
+                    <h3 class="text-sm font-bold text-white uppercase border-b border-white/10 pb-3">CONTACT SPECS</h3>
+                    
+                    <div class="space-y-1">
+                        <span class="text-mono-500 block">EMAIL ADDRESS:</span>
+                        <a href="mailto:abirrajrohit@gmail.com" class="text-base text-white font-bold hover:underline">abirrajrohit@gmail.com</a>
+                    </div>
+
+                    <div class="space-y-1">
+                        <span class="text-mono-500 block">LOCATION:</span>
+                        <p class="text-white font-bold text-sm">Rajshahi, Bangladesh</p>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="pt-6 border-t border-white/10 space-y-3 flex flex-col items-center">
+                        <span class="text-mono-500 block uppercase">SOCIAL INDEX:</span>
+                        <div class="flex items-center justify-center gap-4 pt-1">
+                            <!-- GitHub Link -->
+                            <a href="https://github.com/abirrajrohit" target="_blank" rel="noopener noreferrer" title="GitHub" class="w-11 h-11 border border-white/20 hover:border-white hover:bg-white hover:text-black text-white flex items-center justify-center transition-all">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                            <!-- LinkedIn Link -->
+                            <a href="https://linkedin.com/in/abir-raj-rohit-7a5b503ab" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="w-11 h-11 border border-white/20 hover:border-white hover:bg-white hover:text-black text-white flex items-center justify-center transition-all">
+                                <i class="fa-brands fa-linkedin-in text-lg"></i>
+                            </a>
+                            <!-- Facebook Link -->
+                            <a href="https://facebook.com/abirrajrohit" target="_blank" rel="noopener noreferrer" title="Facebook" class="w-11 h-11 border border-white/20 hover:border-white hover:bg-white hover:text-black text-white flex items-center justify-center transition-all">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </a>
+                            <!-- Instagram Link -->
+                            <a href="https://instagram.com/abirrajrohit" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-11 h-11 border border-white/20 hover:border-white hover:bg-white hover:text-black text-white flex items-center justify-center transition-all">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-mono-950 border-t border-white/10 py-8 font-mono text-xs relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-mono-400">
+            <div>
+                &copy; <span id="year-span"></span> ABIR RAJ ROHIT. ALL RIGHTS RESERVED.
+            </div>
+            <div>
+                BUILT WITH TAILWIND CSS & HTML5 CANVAS
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Copyright Year
+        document.getElementById('year-span').textContent = new Date().getFullYear();
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Typing Text Animation
+        const typingPhrases = [
+            "PYTHON & WEB DEVELOPER",
+            "FOUNDER OF SHEBAX",
+        ];
+        let pIdx = 0;
+        let cIdx = 0;
+        let isDeleting = false;
+        const typingElem = document.getElementById('typing-text');
+
+        function typeLoop() {
+            const current = typingPhrases[pIdx];
+            if (isDeleting) {
+                typingElem.textContent = current.substring(0, cIdx - 1);
+                cIdx--;
+            } else {
+                typingElem.textContent = current.substring(0, cIdx + 1);
+                cIdx++;
+            }
+
+            if (!isDeleting && cIdx === current.length) {
+                isDeleting = true;
+                setTimeout(typeLoop, 2000);
+            } else if (isDeleting && cIdx === 0) {
+                isDeleting = false;
+                pIdx = (pIdx + 1) % typingPhrases.length;
+                setTimeout(typeLoop, 500);
+            } else {
+                setTimeout(typeLoop, isDeleting ? 50 : 90);
+            }
+        }
+        typeLoop();
+
+        // Filter Developer Projects
+        function filterProjects(cat, selectedTab) {
+            const tabs = document.querySelectorAll('.project-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active', 'bg-white', 'text-black', 'font-bold');
+                tab.classList.add('border-white/20', 'text-mono-400');
+            });
+            selectedTab.classList.add('active', 'bg-white', 'text-black', 'font-bold');
+            selectedTab.classList.remove('border-white/20', 'text-mono-400');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+                if (cat === 'all' || categories.includes(cat)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Interactive Astro Graph Canvas
+        const canvas = document.getElementById('astro-canvas');
+        const ctx = canvas.getContext('2d');
+        let nodes = [];
+        let meteors = [];
+
+        function resizeAstroCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+
+        window.addEventListener('resize', resizeAstroCanvas);
+        setTimeout(resizeAstroCanvas, 100);
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            nodes.push({ x, y });
+            document.getElementById('node-count').textContent = `PLOT NODES: ${nodes.length}`;
+        });
+
+        document.getElementById('clear-astro-canvas').addEventListener('click', () => {
+            nodes = [];
+            meteors = [];
+            document.getElementById('node-count').textContent = `PLOT NODES: 0`;
+        });
+
+        document.getElementById('trigger-meteor-btn').addEventListener('click', () => {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    meteors.push({
+                        x: Math.random() * canvas.width,
+                        y: 0,
+                        vx: - (Math.random() * 4 + 3),
+                        vy: Math.random() * 4 + 4,
+                        length: Math.random() * 40 + 30,
+                        alpha: 1
+                    });
+                }, i * 120);
+            }
+        });
+
+        function animateAstroCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw line connections between nodes
+            if (nodes.length > 1) {
+                ctx.beginPath();
+                ctx.moveTo(nodes[0].x, nodes[0].y);
+                for (let i = 1; i < nodes.length; i++) {
+                    ctx.lineTo(nodes[i].x, nodes[i].y);
+                }
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([4, 4]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Draw nodes
+            nodes.forEach(node => {
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, 7, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+
+            // Update & Render Meteors
+            for (let i = meteors.length - 1; i >= 0; i--) {
+                const m = meteors[i];
+                m.x += m.vx;
+                m.y += m.vy;
+                m.alpha -= 0.02;
+
+                if (m.alpha <= 0) {
+                    meteors.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = m.alpha;
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(m.x, m.y);
+                ctx.lineTo(m.x - m.vx * 4, m.y - m.vy * 4);
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            requestAnimationFrame(animateAstroCanvas);
+        }
+        animateAstroCanvas();
+    </script>
+</body>
+</html>

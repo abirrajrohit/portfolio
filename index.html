@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abir Raj Rohit — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f2ee;--fg:#14141a;--mute:#8a8a90;--card:#fff;--line:#d9d6cf;--btn:#14141a;--btnfg:#f4f2ee;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101014;--fg:#f1efea;--mute:#8d8d95;--card:#1a1a20;--line:#2b2b33;--btn:#f1efea;--btnfg:#101014;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101014;--fg:#f1efea;--mute:#8d8d95;--card:#1a1a20;--line:#2b2b33;--btn:#f1efea;--btnfg:#101014;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Outfit',system-ui,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+nav{display:flex;gap:22px;align-items:center;padding:20px 5vw;font-size:14px;overflow-x:auto;white-space:nowrap}
+nav .sp{flex:1}
+nav .meta{color:var(--mute);font-size:12px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:6vh 5vw 8vh;max-width:1200px;margin:auto}
+.tag{font-size:13px;color:var(--mute);margin-bottom:18px}
+h1{font-size:clamp(40px,7vw,76px);line-height:1;margin:0;font-weight:600;letter-spacing:-.03em}
+h1 .dim{color:var(--mute);display:block}
+.flip{position:relative;margin-top:22px;height:clamp(64px,9vw,96px);perspective:700px;max-width:420px}
+.flip div{position:absolute;inset:0;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.14);display:flex;align-items:center;padding:0 26px;font-size:clamp(24px,4vw,40px);font-weight:600;transform-origin:top;transition:transform .6s .15s,opacity .3s .15s;backface-visibility:hidden}
+.flip div::before{content:"";position:absolute;top:-8px;left:20px;right:20px;height:14px;background:repeating-linear-gradient(90deg,var(--mute) 0 2px,transparent 2px 22px);opacity:.5}
+.flip div.out{transform:rotateX(-100deg);opacity:0;transition:transform .6s,opacity .2s}
+.flip div.in{transform:rotateX(0)}
+.cta{display:flex;gap:26px;align-items:center;margin-top:36px;font-size:14px}
+.btn{background:var(--btn);color:var(--btnfg);padding:12px 20px;border-radius:99px;display:inline-flex;gap:14px;align-items:center;font-weight:500}
+.btn i{width:26px;height:26px;border-radius:50%;background:var(--btnfg);color:var(--btn);display:grid;place-items:center;font-style:normal}
+.photo{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#cfcdc7,#8c8a86)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.pill{position:absolute;left:14px;bottom:14px;background:#14141a;color:#fff;font-size:11px;padding:6px 12px;border-radius:99px;filter:none}
+section{max-width:1200px;margin:auto;padding:8vh 5vw;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,44px);margin:0 0 28px;letter-spacing:-.02em;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{border:1px solid var(--line);background:var(--card);padding:8px 16px;border-radius:99px;font-size:14px}
+.ph{aspect-ratio:1;border-radius:14px;background:linear-gradient(135deg,var(--line),var(--card));display:grid;place-items:center;color:var(--mute);font-size:13px}
+footer{text-align:center;padding:8vh 5vw 10vh;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(30px,6vw,64px)}
+footer .mail{color:var(--mute);margin-top:18px;font-size:14px}
+.btn{border:0;font:inherit;cursor:pointer}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:26px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;cursor:zoom-in;display:block}
+.note{color:var(--mute);font-size:13px;margin:14px 0 0}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;padding:5vw}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:100%;max-height:100%;border-radius:12px}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:30}
+.sheet.on{opacity:1;pointer-events:auto}
+.panel{position:relative;width:min(560px,100%);background:var(--bg);border:1px solid var(--line);border-radius:22px 22px 0 0;padding:28px 24px calc(28px + env(safe-area-inset-bottom,0px));transform:translateY(40px);transition:transform .3s}
+.sheet.on .panel{transform:none}
+.panel h3{margin:0 0 4px;font-size:26px}.panel p{margin:0 0 18px;color:var(--mute);font-size:14px}
+.panel .chips a{border:1px solid var(--line);background:var(--card);padding:8px 16px;border-radius:99px;font-size:14px}
+.contact{display:grid;gap:10px;margin-top:20px;font-size:15px}
+.contact a,.contact button{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.x{position:absolute;top:14px;right:16px;background:none;border:0;color:var(--mute);font-size:28px;cursor:pointer;line-height:1}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.photo{max-width:340px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#top">Home</a><a href="#work">Web Development</a><a href="#skills">Skills</a><a href="#photography">Photography</a><a href="#contact">Contact</a>
+  <span class="sp"></span><span class="meta" id="clock">Dhaka</span>
+</nav>
+
+<header class="hero" id="top">
+  <div>
+    <div class="tag">▸ Computer Science Student</div>
+    <h1>Hi, I’m Abir.<span class="dim">I am a</span></h1>
+    <div class="flip" id="flip"></div>
+    <div class="cta">
+      <a class="btn" href="#contact">Start a project <i>→</i></a>
+      <a href="#work">See my work</a>
+    </div>
+  </div>
+  <div class="photo">
+  <img src=photos/IMG_0139_Original.jpeg alt="Abir" style="width:100%;height:100%;object-fit:cover">
+  <span class="pill">My ability card</span>
+</div>
+</header>
+
+<section id="work">
+  <h2>Selected work</h2>
+  <div class="grid">
+    <div class="card"><h3>Project one</h3><p>Short description of what you built and the tools you used.</p></div>
+    <div class="card"><h3>Project two</h3><p>Short description of what you built and the tools you used.</p></div>
+    <div class="card"><h3>Project three</h3><p>Short description of what you built and the tools you used.</p></div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="chips"><span>HTML &amp CSS</span><span>JavaScript</span><span>Python</span><span>Responsive design</span><span>Git</span></div>
+  <p style="color:var(--mute);margin-top:26px">Studying Computer Science and Technology at Bangladesh Polytechnic Institute.</p>
+</section>
+
+<section id="photography">
+  <h2>Photography</h2>
+  <div class="gallery" id="gallery"></div>
+  <label class="btn">Add photos <i>+</i><input type="file" id="addphotos" accept="image/*" multiple hidden></label>
+  <p class="note"></p>
+</section>
+
+<footer id="contact">
+  <h2>ABIR..</h2>
+  <button class="btn" id="hello" type="button">Say hello <i>→</i></button>
+  <div class="mail">Available for work · Remote-first</div>
+</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="panel" role="dialog" aria-label="Contact">
+    <button class="x" id="close" type="button" aria-label="Close">×</button>
+    <h3>Say hello 👋</h3>
+    <p>Find me on social media or reach out directly.</p>
+    <div class="chips">
+      <a href="https://instagram.com/abirrajrohit" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/abirrajrohit" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://github.com/abirrajrohit" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/abir-raj-rohit-7a5b503ab" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- <a href="https://wa.me/8801609968737" target="_blank" rel="noopener">WhatsApp</a> -->
+    </div>
+    <div class="contact">
+      <a href="mailto:abirrajrohit@gmail.com">✉ abirrajrohit@gmail.com</a>
+      <!-- <a href="tel:+8801609968737">☎ +880 1609-968737</a> -->
+      <button id="copy" type="button">Copy email</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var roles=["Web Developer","Photographer","CS Student","Python Developer"],box=document.getElementById("flip"),i=0,cur=null;
+  function show(){
+    var n=document.createElement("div");n.textContent=roles[i%roles.length];n.className="out";box.appendChild(n);
+    void n.offsetWidth;n.className="in";
+    if(cur){var o=cur;o.className="out";setTimeout(function(){o.remove()},750)}
+    cur=n;i++;
+  }
+  show();setInterval(show,2600);
+  function tick(){
+    try{document.getElementById("clock").textContent="Local time "+new Date().toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"})}catch(e){}
+  }
+  tick();setInterval(tick,30000);
+  var PHOTOS=[
+    "photos/IMG_0201.JPG",
+    "photos/IMG_0202.JPG",
+    "photos/IMG_0189.JPG",
+    "photos/PXL_20240604_154307555.NIGHT.jpg",
+    "photos/Abir Raj Rohit  (37)_Original.JPG",
+    "photos/PXL_20240722_115532814-EFFECTS.jpg",
+  ]; // add your photo paths here, e.g. "photos/1.jpg"
+  var g=document.getElementById("gallery"),lb=document.getElementById("lb"),lbi=lb.querySelector("img");
+  function render(){
+    g.innerHTML="";
+    if(!PHOTOS.length){for(var k=1;k<=6;k++){var p=document.createElement("div");p.className="ph";p.textContent="Photo "+k;g.appendChild(p)}return}
+    PHOTOS.forEach(function(s){var im=document.createElement("img");im.src=s;im.alt="Photograph by Abir";im.loading="lazy";im.onclick=function(){lbi.src=s;lb.classList.add("on")};g.appendChild(im)});
+  }
+  render();
+  document.getElementById("addphotos").addEventListener("change",function(e){
+    Array.prototype.forEach.call(e.target.files,function(f){PHOTOS.push(URL.createObjectURL(f))});render();
+  });
+  lb.onclick=function(){lb.classList.remove("on")};
+  var sh=document.getElementById("sheet");
+  function openS(o){sh.classList.toggle("on",o);sh.setAttribute("aria-hidden",o?"false":"true")}
+  document.getElementById("hello").onclick=function(){openS(true)};
+  document.getElementById("close").onclick=function(){openS(false)};
+  sh.addEventListener("click",function(e){if(e.target===sh)openS(false)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"){openS(false);lb.classList.remove("on")}});
+  document.getElementById("copy").onclick=function(){var b=this;try{navigator.clipboard.writeText("abirrajrohit@gmail.com").then(function(){b.textContent="Copied ✓"})}catch(e){}};
+})();
+</script>
+</body>
+</html>
